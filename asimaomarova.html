@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASIMA OMAROVA Beauty Studio | Салон красоты в Шымкенте</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-color: #F9F9F7;
+            --text-dark: #1A1A1A;
+            --text-light: #FFFFFF;
+            --gold: #D4AF37;
+            --gold-hover: #b5952f;
+            --gray-light: #E5E5E5;
+            --gray-dark: #4A4A4A;
+            --font-headings: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-headings);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--text-light);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--text-light);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: var(--gray-dark);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Reveal Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background-color: transparent;
+        }
+
+        nav.scrolled {
+            background-color: rgba(26, 26, 26, 0.98);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-headings);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--gold);
+            display: block;
+            font-size: 12px;
+            letter-spacing: 4px;
+            font-family: var(--font-body);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.8)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--gray-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Services & Prices Section */
+        #services {
+            background-color: var(--text-light);
+        }
+
+        .tabs-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--gray-light);
+            padding: 12px 24px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-dark);
+            border-radius: 30px;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--gold);
+            color: var(--text-light);
+            border-color: var(--gold);
+        }
+
+        .tab-content {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .price-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .price-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .price-value {
+            font-family: var(--font-headings);
+            font-size: 18px;
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: var(--bg-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--text-light);
+            font-size: 32px;
+        }
+
+        /* About Us Section */
+        #about {
+            background-color: var(--text-light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+            font-size: 16px;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background-color: var(--bg-color);
+            padding: 15px 25px;
+            border-left: 4px solid var(--gold);
+            margin-top: 20px;
+        }
+
+        .rating-score {
+            font-size: 32px;
+            font-family: var(--font-headings);
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .rating-stars {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        .rating-reviews {
+            font-size: 12px;
+            color: var(--gray-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Footer & Contacts */
+        #contacts {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            padding: 80px 0 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            color: var(--gold);
+            font-size: 20px;
+            margin-top: 4px;
+        }
+
+        .contact-item p {
+            font-size: 15px;
+            color: var(--gray-light);
+        }
+
+        .contact-item a {
+            color: var(--gray-light);
+        }
+
+        .contact-item a:hover {
+            color: var(--gold);
+        }
+
+        .payment-methods {
+            margin-top: 40px;
+        }
+        
+        .payment-methods h4 {
+            font-family: var(--font-body);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--gray-light);
+        }
+
+        .payment-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            background-color: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .footer-bottom {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: var(--gray-dark);
+        }
+
+        /* Social Icons */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            .hero-title {
+                font-size: 48px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--text-dark);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s ease-in-out;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                ASIMA OMAROVA
+                <span>Beauty Studio</span>
+            </a>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги и цены</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#contacts" class="btn btn-gold" style="color: white;">Записаться</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <div class="container hero-content reveal">
+            <h1 class="hero-title">Искусство вашего преображения</h1>
+            <p class="hero-subtitle">Премиальные услуги для волос, ногтей и эстетики лица. Раскройте свою истинную красоту вместе с профессионалами.</p>
+            <a href="#contacts" class="btn btn-gold">Записаться онлайн</a>
+        </div>
+    </header>
+
+    <!-- Services & Prices Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title reveal">Наши Услуги</h2>
+            <p class="section-subtitle reveal">Ознакомьтесь с нашим прайс-листом</p>
+
+            <div class="tabs-container reveal">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'hair')">Парикмахерские услуги</button>
+                    <button class="tab-btn" onclick="openTab(event, 'nails')">Ногтевая студия</button>
+                    <button class="tab-btn" onclick="openTab(event, 'brows')">Брови и Ресницы</button>
+                    <button class="tab-btn" onclick="openTab(event, 'epilation')">Эпиляция</button>
+                </div>
+
+                <!-- Hair Services -->
+                <div id="hair" class="tab-content" style="display: block;">
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-name">Женская стрижка</span>
+                            <span class="price-value">от 2500 тнг</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Сложное окрашивание</span>
+                            <span class="price-value">индивидуально</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Кератиновое выпрямление</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Ботокс волос</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Полировка волос</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Детская стрижка</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Свадебные и вечерние причёски</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nails Services -->
+                <div id="nails" class="tab-content">
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-name">Гель-лак</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Наращивание гелем/акрилом</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Аппаратный маникюр</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Женский/Мужской педикюр</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Мужской маникюр</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brows & Lashes Services -->
+                <div id="brows" class="tab-content">
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-name">Наращивание ресниц</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Ламинирование ресниц/бровей</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Окрашивание ресниц/бровей</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Коррекция бровей</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Epilation Services -->
+                <div id="epilation" class="tab-content">
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span class="price-name">Шугаринг</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">Восковая эпиляция</span>
+                            <span class="price-value">по запросу</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title reveal">Наши Работы</h2>
+            <p class="section-subtitle reveal">Вдохновляйтесь эстетикой и качеством</p>
+            
+            <div class="gallery-grid reveal">
+                <!-- Reference 1: Main entrance storefront with a pink floral arch -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM (2).jpeg" alt="Вход в салон ASIMA OMAROVA, цветочная арка">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+                <!-- Reference 2: Precise nail art - Classy red french tips -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM (3).jpeg" alt="Красный френч маникюр">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+                <!-- Reference 3: Precise nail art - Elegant matte black almond nails with leopard prints -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM (4).jpeg" alt="Матовый черный маникюр с леопардовым принтом">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+                <!-- Reference 4: Precise nail art - Glossy black with gold flakes -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM (5).jpeg" alt="Глянцевый черный маникюр с золотой поталью">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+                <!-- Reference 5: Precise nail art - Milky pink with abstract silver waves -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM (6).jpeg" alt="Молочно-розовый маникюр с серебряными волнами">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+                <!-- Reference 6: Precise nail art - Soft nude tones with delicate rhinestone accents -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM.jpeg" alt="Нюдовый маникюр со стразами">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+                <!-- Reference 7: Traditional high-fashion Kazakh headwear styling & glam makeup -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM (7).jpeg" alt="Казахский национальный образ и вечерний макияж">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+                <!-- Reference 8: Professional evening/bridal hair styling or portrait -->
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-07-13 at 10.55.13 PM (1).jpeg" alt="Профессиональный макияж и укладка волос">
+                    <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container about-content reveal">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left;">О студии</h2>
+                <p>Добро пожаловать в <strong>ASIMA OMAROVA Beauty Studio</strong> — пространство, где стиль встречается с безупречным сервисом. Мы создаем атмосферу, в которой каждый гость может расслабиться и довериться рукам настоящих профессионалов.</p>
+                <p>Наша команда постоянно следит за премиальными трендами в мире красоты, повышает квалификацию и использует только сертифицированные материалы. Мы ценим вашу индивидуальность и подчеркиваем её с помощью современных техник.</p>
+                
+                <div class="rating-badge">
+                    <div class="rating-score">4.7</div>
+                    <div>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="rating-reviews">На основе 145 отзывов</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1521590832167-7bfc17484d5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер салона красоты">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacts Section -->
+    <footer id="contacts">
+        <div class="container footer-grid reveal">
+            <div class="contact-info">
+                <h3>Ждем вас в гости</h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Адрес:</strong>
+                        <p>Улица Аль-Фараби, 94/4,<br>Катын копр м-н, Абайский район,<br>Шымкент</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Режим работы:</strong>
+                        <p>09:00 - 20:00<br><span style="color: var(--gold); font-size: 13px;">Откроется завтра в 09:00</span></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Телефон:</strong>
+                        <p><a href="tel:+77787592121">+7 (778) 759-21-21</a></p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.tiktok.com/@asimaomarova8" target="_blank" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+
+                <div class="payment-methods">
+                    <h4>Способы оплаты</h4>
+                    <div class="payment-badges">
+                        <span class="badge">Наличный расчёт</span>
+                        <span class="badge">Перевод с карты</span>
+                        <span class="badge">Оплата по QR-коду</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <!-- Embedded Google Map pointing to Shymkent general area (placeholder for exact address) -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119224.23842183201!2d69.51610499039304!3d42.34084534887376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38a91c0628e8d89b%3A0xc6fb0e0bc35661d9!2z0KjRi9C80LrQtdC90YI!5e0!3m2!1sru!2skz!4v1700000000000!5m2!1sru!2skz" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 ASIMA OMAROVA Beauty Studio. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // 1. Sticky Navigation Background
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Mobile Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // 3. Service Filter Tabs Logic
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            const tabcontent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove 'active' class from all buttons
+            const tablinks = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show current tab and add active class
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 4. Scroll Reveal Animation via Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
+</body>
+</html>
